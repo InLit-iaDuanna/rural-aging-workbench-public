@@ -1,0 +1,1003 @@
+{
+  "mode": "demo",
+  "description": "全部村庄、角色、尺度、人口与容量均为合成示例，不代表真实试点",
+  "world": {
+    "mode": "demo",
+    "image": "/demo-orthophoto.png",
+    "scale": 0.5,
+    "calibration": {
+      "status": "demo",
+      "source": "合成示例假设",
+      "unit": "m"
+    },
+    "crs": "演示局部平面坐标",
+    "address": "青溪村（虚构演示场景）",
+    "locationConfirmed": false,
+    "nodes": [
+      {
+        "id": "n1",
+        "x": 159,
+        "y": 195,
+        "name": "西侧老人聚集区"
+      },
+      {
+        "id": "n2",
+        "x": 415,
+        "y": 195,
+        "name": "广场西入口"
+      },
+      {
+        "id": "n3",
+        "x": 545,
+        "y": 188,
+        "name": "村委会"
+      },
+      {
+        "id": "n4",
+        "x": 417,
+        "y": 356,
+        "name": "广场南入口"
+      },
+      {
+        "id": "n5",
+        "x": 545,
+        "y": 354,
+        "name": "活动中心"
+      },
+      {
+        "id": "n6",
+        "x": 155,
+        "y": 497,
+        "name": "南侧老人住宅"
+      },
+      {
+        "id": "n7",
+        "x": 415,
+        "y": 500,
+        "name": "公厕"
+      },
+      {
+        "id": "n8",
+        "x": 545,
+        "y": 496,
+        "name": "助餐点"
+      },
+      {
+        "id": "n9",
+        "x": 845,
+        "y": 524,
+        "name": "东侧住宅"
+      },
+      {
+        "id": "n10",
+        "x": 812,
+        "y": 197,
+        "name": "卫生室"
+      }
+    ],
+    "roads": [
+      {
+        "id": "R-01",
+        "a": "n1",
+        "b": "n2",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-02",
+        "a": "n2",
+        "b": "n3",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-03",
+        "a": "n3",
+        "b": "n10",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-04",
+        "a": "n1",
+        "b": "n6",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": false
+      },
+      {
+        "id": "R-05",
+        "a": "n2",
+        "b": "n4",
+        "width": 1.1,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": true,
+        "lit": true
+      },
+      {
+        "id": "R-06",
+        "a": "n4",
+        "b": "n5",
+        "width": null,
+        "source": "未知",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-07",
+        "a": "n4",
+        "b": "n7",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-08",
+        "a": "n3",
+        "b": "n5",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-09",
+        "a": "n5",
+        "b": "n8",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-10",
+        "a": "n6",
+        "b": "n7",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-11",
+        "a": "n7",
+        "b": "n8",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-12",
+        "a": "n8",
+        "b": "n9",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      },
+      {
+        "id": "R-13",
+        "a": "n10",
+        "b": "n9",
+        "width": 3.5,
+        "source": "演示估计",
+        "access": "公开通行",
+        "confirmed": true,
+        "steps": false,
+        "lit": true
+      }
+    ],
+    "buildings": [
+      {
+        "id": "B-01",
+        "name": "西侧住宅组",
+        "x": 236,
+        "y": 281,
+        "w": 49,
+        "h": 49,
+        "kind": "老人住宅聚集区",
+        "elderly": 28
+      },
+      {
+        "id": "B-02",
+        "name": "南侧老人住宅",
+        "x": 192,
+        "y": 458,
+        "w": 47,
+        "h": 33,
+        "kind": "典型老人住宅",
+        "elderly": 6
+      },
+      {
+        "id": "B-03",
+        "name": "村委会",
+        "x": 532,
+        "y": 123,
+        "w": 75,
+        "h": 73,
+        "kind": "村委会",
+        "elderly": 0
+      },
+      {
+        "id": "B-04",
+        "name": "活动中心",
+        "x": 583,
+        "y": 294,
+        "w": 55,
+        "h": 82,
+        "kind": "活动中心",
+        "elderly": 0
+      },
+      {
+        "id": "B-05",
+        "name": "卫生室",
+        "x": 753,
+        "y": 240,
+        "w": 65,
+        "h": 42,
+        "kind": "卫生室",
+        "elderly": 0
+      },
+      {
+        "id": "B-06",
+        "name": "助餐点",
+        "x": 488,
+        "y": 550,
+        "w": 69,
+        "h": 42,
+        "kind": "食堂／助餐点",
+        "elderly": 0
+      },
+      {
+        "id": "B-07",
+        "name": "公厕",
+        "x": 388,
+        "y": 435,
+        "w": 41,
+        "h": 27,
+        "kind": "公厕",
+        "elderly": 0
+      },
+      {
+        "id": "B-08",
+        "name": "东侧住宅",
+        "x": 772,
+        "y": 468,
+        "w": 66,
+        "h": 45,
+        "kind": "典型老人住宅",
+        "elderly": 12
+      }
+    ],
+    "hazards": [
+      {
+        "id": "SP-01",
+        "x": 416,
+        "y": 283,
+        "road": "R-05",
+        "kind": "楼梯",
+        "environment": "日常",
+        "status": "已确认",
+        "note": "示例：巷道内存在台阶，需现场确认高度。",
+        "source": "演示人工录入"
+      },
+      {
+        "id": "SP-02",
+        "x": 320,
+        "y": 195,
+        "road": "R-01",
+        "kind": "积水",
+        "environment": "雨后",
+        "status": "已确认",
+        "note": "示例：雨后有效通行区缩窄。",
+        "source": "演示人工录入"
+      },
+      {
+        "id": "SP-03",
+        "x": 157,
+        "y": 363,
+        "road": "R-04",
+        "kind": "夜间无照明",
+        "environment": "夜间",
+        "status": "待核实",
+        "note": "示例候选观察，尚未确认。",
+        "source": "演示候选观察"
+      }
+    ],
+    "facility": null,
+    "config": {
+      "role": "拄杖",
+      "vision": "一般视力",
+      "familiarity": "熟悉",
+      "carrying": "无",
+      "environment": "日常",
+      "start": "n1",
+      "end": "n8",
+      "habit": [
+        "n1",
+        "n2",
+        "n4",
+        "n5",
+        "n8"
+      ]
+    },
+    "history": [],
+    "audit": [],
+    "version": 0,
+    "layout": [
+      {
+        "id": "l1",
+        "x": 34,
+        "y": 38,
+        "kind": "扶手长椅"
+      },
+      {
+        "id": "l2",
+        "x": 64,
+        "y": 34,
+        "kind": "遮阳棚"
+      },
+      {
+        "id": "l3",
+        "x": 72,
+        "y": 68,
+        "kind": "照明"
+      }
+    ],
+    "goal": "增设遮阳、休息和照明，让老人可以安心停留。",
+    "budget": "低",
+    "preserve": "保留树木、建筑、道路与原有出入口"
+  },
+  "scenarios": [
+    {
+      "world_version": 0,
+      "environment": "雨后",
+      "personas": [
+        {
+          "name": "助行器使用者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 1.5,
+          "start": "n1",
+          "goal": "n8",
+          "role": "使用助行器",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "中途需要休息",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "耐力较弱",
+          "speed": 0.8,
+          "max_walk": 180,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "偏好熟悉路线",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "独立步行",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "早到用餐者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 120,
+          "min_width": 1.5,
+          "start": "n1",
+          "goal": "n8",
+          "role": "使用助行器",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "拄杖出行者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 240,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "耐力较弱",
+          "speed": 0.8,
+          "max_walk": 180,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "晚到用餐者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 360,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "独立步行",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        }
+      ],
+      "resources": [
+        {
+          "id": "meal",
+          "node_id": "n8",
+          "kind": "meal",
+          "capacity": 2,
+          "opens": 0,
+          "closes": 7200,
+          "duration": 300,
+          "source": "演示假设：两个服务位"
+        }
+      ],
+      "assumptions": [
+        "全部角色、速度、开放时段及容量为合成假设",
+        "角色预先了解示例路网"
+      ],
+      "delivery": false,
+      "name": "现状",
+      "type": "reality",
+      "patches": []
+    },
+    {
+      "world_version": 0,
+      "environment": "雨后",
+      "personas": [
+        {
+          "name": "助行器使用者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 1.5,
+          "start": "n1",
+          "goal": "n8",
+          "role": "使用助行器",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "中途需要休息",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "耐力较弱",
+          "speed": 0.8,
+          "max_walk": 180,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "偏好熟悉路线",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "独立步行",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "早到用餐者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 120,
+          "min_width": 1.5,
+          "start": "n1",
+          "goal": "n8",
+          "role": "使用助行器",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "拄杖出行者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 240,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "耐力较弱",
+          "speed": 0.8,
+          "max_walk": 180,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "晚到用餐者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 360,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "独立步行",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        }
+      ],
+      "resources": [
+        {
+          "id": "meal",
+          "node_id": "n8",
+          "kind": "meal",
+          "capacity": 2,
+          "opens": 0,
+          "closes": 7200,
+          "duration": 300,
+          "source": "演示假设：两个服务位"
+        },
+        {
+          "id": "seat",
+          "node_id": "n2",
+          "kind": "seat",
+          "capacity": 1,
+          "opens": 0,
+          "closes": 7200,
+          "duration": 120,
+          "source": "候选休息点假设"
+        }
+      ],
+      "assumptions": [
+        "全部角色、速度、开放时段及容量为合成假设",
+        "角色预先了解示例路网"
+      ],
+      "delivery": false,
+      "name": "工程改善",
+      "type": "engineering",
+      "patches": [
+        {
+          "road_id": "R-05",
+          "steps": false,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "world_version": 0,
+      "environment": "雨后",
+      "personas": [
+        {
+          "name": "助行器使用者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 1.5,
+          "start": "n1",
+          "goal": "n8",
+          "role": "使用助行器",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "中途需要休息",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "耐力较弱",
+          "speed": 0.8,
+          "max_walk": 180,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "偏好熟悉路线",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 0,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "独立步行",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "早到用餐者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 120,
+          "min_width": 1.5,
+          "start": "n1",
+          "goal": "n8",
+          "role": "使用助行器",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "拄杖出行者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 240,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "耐力较弱",
+          "speed": 0.8,
+          "max_walk": 180,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        },
+        {
+          "name": "晚到用餐者",
+          "synthetic": true,
+          "source": "合成测试假设，不代表真实老人",
+          "departure": 360,
+          "min_width": 0,
+          "start": "n1",
+          "goal": "n8",
+          "role": "独立步行",
+          "speed": 0.8,
+          "max_walk": 600,
+          "familiarity": "熟悉",
+          "habit": [],
+          "known_roads": [
+            "R-01",
+            "R-02",
+            "R-03",
+            "R-04",
+            "R-05",
+            "R-06",
+            "R-07",
+            "R-08",
+            "R-09",
+            "R-10",
+            "R-11",
+            "R-12",
+            "R-13"
+          ]
+        }
+      ],
+      "resources": [
+        {
+          "id": "meal",
+          "node_id": "n8",
+          "kind": "meal",
+          "capacity": 2,
+          "opens": 0,
+          "closes": 7200,
+          "duration": 300,
+          "source": "演示假设：两个服务位"
+        }
+      ],
+      "assumptions": [
+        "全部角色、速度、开放时段及容量为合成假设",
+        "角色预先了解示例路网",
+        "送餐覆盖所有合成角色，仅检验出行需求变化，不推算送餐运力"
+      ],
+      "delivery": true,
+      "name": "服务调整",
+      "type": "service",
+      "patches": []
+    }
+  ]
+}

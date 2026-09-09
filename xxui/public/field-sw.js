@@ -1,0 +1,4 @@
+const CACHE='xiangzhu-field-v2-1';
+self.addEventListener('install',()=>self.skipWaiting());
+self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('xiangzhu-field-')&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
+self.addEventListener('fetch',event=>{const u=new URL(event.request.url);if(event.request.method!=='GET'||u.origin!==self.location.origin||u.pathname.startsWith('/api/'))return;if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).then(async r=>{if(r.ok){const c=await caches.open(CACHE);await c.put('/',r.clone())}return r}).catch(async()=>await caches.match('/')||new Response('请先联网打开乡筑，再进行离线采集',{status:503})));return}if(/\.(js|css|woff2|png|svg)$/.test(u.pathname))event.respondWith(caches.match(event.request).then(r=>r||fetch(event.request).then(async r=>{if(r.ok)(await caches.open(CACHE)).put(event.request,r.clone());return r})));});

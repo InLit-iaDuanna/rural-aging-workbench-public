@@ -1,0 +1,35 @@
+[
+  {
+    "title":"积极发展老年助餐服务行动方案（2023）",
+    "url":"https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202311/t20231114_468483.shtml",
+    "locator":"二、扩大和优化服务供给；（四）优化餐食配送服务",
+    "excerpt":"重点解决为行动不便老年人送餐上门问题。",
+    "claim":"送餐是可供研究的助餐服务组织方式。",
+    "type":"standard","stage":"not_applicable","tags":["助餐","送餐","农村"],
+    "conditions":"需结合本村需求、人员、食品安全和可持续运营条件；使用前复核当前适用性。",
+    "limitations":"政策指导不是已建案例，也不证明本村送餐覆盖、运力或成本。",
+    "verified":false,"material_ids":[]
+  },
+  {
+    "title":"十四五国家老龄事业发展和养老服务体系规划（历史指导资料）",
+    "url":"https://app.www.gov.cn/govdata/gov/202202/21/482089/article.html",
+    "locator":"（二十四）推进公共环境无障碍和适老化改造",
+    "excerpt":"有条件的小区可建设凉亭、休闲座椅等。",
+    "claim":"休息设施属于可研究的适老化环境措施。",
+    "type":"standard","stage":"not_applicable","tags":["休息","座椅","适老化"],
+    "conditions":"该段涉及社区空间；转用农村道路前需核对场地、维护和实际使用条件。规划周期已结束，应核查后续文件。",
+    "limitations":"不能作为本村必须设置的工程标准，不能证明减少事故或确定座椅间距。",
+    "verified":false,"material_ids":[]
+  },
+  {
+    "title":"关于进一步加强老年人助餐配餐服务工作的意见（北京历史地方资料）",
+    "url":"https://www.beijing.gov.cn/zhengce/zhengcefagui/201905/t20190522_61781.html",
+    "locator":"老年餐集中配送中心与助餐点服务模式相关段落",
+    "excerpt":"或由工作人员送餐上门。",
+    "claim":"集中制餐、助餐点就餐与送餐可以作为不同服务模式进行比较。",
+    "type":"standard","stage":"not_applicable","tags":["集中配送","送餐","助餐点"],
+    "conditions":"北京地方历史文件；项目负责人须复核原文、时效及本地适用条件。",
+    "limitations":"不把北京设施数量、补贴或服务要求直接用于其他地区；不证明本村已经开展服务。",
+    "verified":false,"material_ids":[]
+  }
+]

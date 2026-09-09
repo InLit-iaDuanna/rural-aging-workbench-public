@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: xiangzhu
+      POSTGRES_USER: xiangzhu
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?configure POSTGRES_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U xiangzhu -d xiangzhu"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    env_file: .env.production
+    environment:
+      HOST: 0.0.0.0
+      PORT: 4100
+      MATERIALS_DIR: /data/materials
+    ports:
+      - "127.0.0.1:4100:4100"
+    volumes:
+      - materials:/data/materials
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+  backup:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    command: ["node", "--import", "tsx", "scripts/backup-loop.ts"]
+    env_file: .env.production
+    environment:
+      MATERIALS_DIR: /data/materials
+      BACKUP_DIR: /backups
+    volumes:
+      - materials:/data/materials:ro
+      - backups:/backups
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+volumes:
+  postgres:
+  materials:
+  backups:
