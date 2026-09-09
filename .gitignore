@@ -1,0 +1,8 @@
+# Local backups and extracted working files
+/xxui-backups/
+/requirements-extracted.txt
+
+# macOS metadata files copied with project assets
+._*
+**/._*
+

@@ -1,0 +1,29 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+import {Building2,MapPin,Plus,Minus,LocateFixed,Layers} from 'lucide-react';
+import {distance,footprint,projectSegment,type Spatial,type Point,type RouteResult} from '@/lib/spatial';
+type Props={data:Spatial;tool:string;selected:string;route?:RouteResult;onSelect:(id:string)=>void;onPoint:(p:Point)=>void;onMoveFacility:(p:Point)=>void;};
+export default function SpatialMap({data:s,tool,selected,route,onSelect,onPoint,onMoveFacility}:Props){
+ const canvas=useRef<HTMLCanvasElement>(null),surface=useRef<HTMLDivElement>(null);const [zoom,setZoom]=useState(1),[tilt,setTilt]=useState(false),[layers,setLayers]=useState(true);const dragging=useRef(false);
+ useEffect(()=>{const c=canvas.current?.getContext('2d');if(!c)return;c.clearRect(0,0,1000,667);if(!layers)return;
+ c.lineCap='round';c.lineJoin='round';
+ for(const r of s.roads){const a=s.nodes.find(n=>n.id===r.a),b=s.nodes.find(n=>n.id===r.b);if(!a||!b)continue;c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.strokeStyle='#132b3680';c.lineWidth=11;c.setLineDash([]);c.stroke();c.strokeStyle=r.id===selected?'#f5be63':r.access==='不可通行'?'#dd8476':r.confirmed?'#a8e3c2':'#fff6c7';c.lineWidth=r.id===selected?7:4;c.setLineDash(r.confirmed?[]:[9,6]);c.stroke();c.setLineDash([]);c.font='bold 12px sans-serif';c.fillStyle='#163d35';const x=(a.x+b.x)/2,y=(a.y+b.y)/2;c.fillRect(x-21,y-9,43,17);c.fillStyle='#fff';c.textAlign='center';c.fillText(r.id,x,y+4);}
+ for(const b of s.buildings){c.fillStyle=b.id===selected?'#edc577ba':b.elderly>0?'#d2bce4a8':'#bedcd1a0';c.strokeStyle=b.id===selected?'#ffe4a7':'#ebfff1c9';c.lineWidth=2;c.fillRect(b.x-b.w/2,b.y-b.h/2,b.w,b.h);c.strokeRect(b.x-b.w/2,b.y-b.h/2,b.w,b.h);}
+ if(route?.reachable){const nodes=route.nodes.map(id=>s.nodes.find(n=>n.id===id)!);c.beginPath();nodes.forEach((n,i)=>i?c.lineTo(n.x,n.y):c.moveTo(n.x,n.y));c.strokeStyle='#fff';c.lineWidth=10;c.stroke();c.strokeStyle='#eeaa50';c.lineWidth=6;c.stroke();}
+ for(const n of s.nodes){c.beginPath();c.arc(n.x,n.y,n.id===selected?8:5,0,Math.PI*2);c.fillStyle=n.id===selected?'#ffd779':'#fff';c.strokeStyle='#3a7760';c.lineWidth=2;c.fill();c.stroke();}
+ if(s.facility){const points=footprint(s.facility,s.scale);c.beginPath();points.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();c.fillStyle='#ecd58faf';c.strokeStyle='#fff0a1';c.lineWidth=3;c.fill();c.stroke();}
+ },[s,selected,route,layers]);
+ const point=(e:React.PointerEvent)=>{const r=surface.current!.getBoundingClientRect();return{x:Math.max(0,Math.min(1000,(e.clientX-r.left)/r.width*1000)),y:Math.max(0,Math.min(667,(e.clientY-r.top)/r.height*667))};};
+ function click(p:Point){if(tool!=='select'){onPoint(p);return;}const b=s.buildings.find(b=>Math.abs(p.x-b.x)<b.w/2&&Math.abs(p.y-b.y)<b.h/2);if(b){onSelect(b.id);return;}const road=s.roads.map(r=>{const a=s.nodes.find(n=>n.id===r.a)!,b=s.nodes.find(n=>n.id===r.b)!;return{id:r.id,d:distance(p,projectSegment(p,a,b))}}).sort((a,b)=>a.d-b.d)[0];if(road&&road.d<20){onSelect(road.id);return;}const n=s.nodes.find(n=>distance(n,p)<20);if(n)onSelect(n.id);}
+ return <div className={'dw-map '+(tilt?'is-tilted':'')}>
+  <div className="dw-map-top"><span><i/> {s.mode==='demo'?'青溪村 · 演示语义地图':'项目影像 · 人工语义地图'}</span><button onClick={()=>setTilt(!tilt)}><Layers size={14}/>{tilt?'2D 编辑':'2.5D 查看'}</button></div>
+  <div className="dw-map-viewport"><div className="dw-map-surface" ref={surface} style={{transform:`scale(${zoom}) ${tilt?'perspective(1200px) rotateX(32deg)':''}`}} onPointerDown={e=>{if(tilt||!layers)return;const p=point(e);if(tool==='facility'&&s.facility&&distance(p,s.facility)<35){dragging.current=true;e.currentTarget.setPointerCapture(e.pointerId);}else click(p);}} onPointerMove={e=>{if(dragging.current)onMoveFacility(point(e));}} onPointerUp={()=>dragging.current=false} onPointerCancel={()=>dragging.current=false}>
+   <img src={s.image} alt="当前村庄底图" draggable={false}/><canvas ref={canvas} width={1000} height={667} aria-label="道路和建筑语义图层"/>
+   {layers&&s.buildings.filter(b=>b.elderly>0||b.id===selected).map(b=><button key={b.id} className={'dw-building-label '+(b.id===selected?'selected':'')} style={{left:`${b.x/10}%`,top:`${(b.y-b.h/2)/6.67}%`}} onPointerDown={e=>e.stopPropagation()} onClick={()=>onSelect(b.id)}><Building2 size={12}/>{b.name}{b.elderly>0&&<b>{b.elderly}人</b>}</button>)}
+   {layers&&s.hazards.filter(h=>h.status!=='已否定').map(h=><button key={h.id} className={'dw-hazard-pin '+(h.id===selected?'selected':'')} style={{left:`${h.x/10}%`,top:`${h.y/6.67}%`}} aria-label={`${h.id} ${h.kind}`} title={h.kind} onPointerDown={e=>e.stopPropagation()} onClick={()=>onSelect(h.id)}><MapPin size={17}/></button>)}
+   {s.facility&&layers&&<button className="dw-facility-label" style={{left:`${s.facility.x/10}%`,top:`${s.facility.y/6.67}%`}} onPointerDown={e=>e.stopPropagation()} onKeyDown={e=>{const d:{[k:string]:Point}={ArrowLeft:{x:-5,y:0},ArrowRight:{x:5,y:0},ArrowUp:{x:0,y:-5},ArrowDown:{x:0,y:5}};if(d[e.key]){e.preventDefault();onMoveFacility({x:s.facility!.x+d[e.key].x,y:s.facility!.y+d[e.key].y});}}}>{s.facility.name}</button>}
+  </div></div><div className="dw-map-tools"><button aria-label="放大地图" onClick={()=>setZoom(Math.min(zoom+.25,2))}><Plus size={17}/></button><button aria-label="缩小地图" onClick={()=>setZoom(Math.max(zoom-.25,1))}><Minus size={17}/></button><button aria-label="复位地图" onClick={()=>{setZoom(1);setTilt(false)}}><LocateFixed size={17}/></button><button aria-label="切换语义图层" aria-pressed={layers} onClick={()=>setLayers(!layers)}><Layers size={17}/></button></div>
+  <div className="dw-map-caption">{tilt?'2.5D 仅作倾斜空间示意，未接入高程。':tool==='road'?'依次点击两个位置补画道路，可吸附已有节点。':tool==='hazard'?'点击地图添加特殊情况。':tool==='building'?'点击地图添加建筑，随后编辑属性。':tool==='facility'?'点击试放设施；拖动轮廓或用方向键微调。':'点击道路、建筑或风险点，查看与编辑属性。'}</div>
+  <div className="dw-map-scale">底图宽约 {Math.round(1000*s.scale)} m · {s.mode==='demo'?'模拟尺度':'用户尺度'}</div>
+ </div>
+}
