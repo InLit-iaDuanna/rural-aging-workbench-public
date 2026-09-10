@@ -82,6 +82,7 @@ it('persists real village metadata without inventing a road network and rejects 
     expect(blank.json().initialization.focus).toEqual([]);
     const metadata = {
       route: '测试路线',
+      capture_id: 'ad304f12-fdcb-4aa5-92b1-9846c1c668b7',
       lat: 30,
       lng: 118,
       accuracy: 10,
@@ -111,6 +112,18 @@ it('persists real village metadata without inventing a road network and rejects 
       payload: uploadBody,
     });
     expect(upload.statusCode).toBe(200);
+    const repeatUpload = await app.inject({
+      method: 'POST',
+      url: '/api/v1/projects/' + p.id + '/street-photos',
+      headers: { 'content-type': 'multipart/form-data; boundary=' + boundary },
+      payload: uploadBody,
+    });
+    expect(repeatUpload.statusCode).toBe(200);
+    expect(repeatUpload.json()).toEqual({
+      id: upload.json().id,
+      already_saved: true,
+    });
+
     const photos = (
       await app.inject({ url: '/api/v1/projects/' + p.id + '/street-photos' })
     ).json();

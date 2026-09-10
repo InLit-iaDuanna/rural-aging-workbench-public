@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 let sdk: Promise<any> | undefined;
-function loadMap() {
+export function loadMap() {
   if (sdk) return sdk;
   sdk = new Promise((resolve, reject) => {
     const w = window as any;

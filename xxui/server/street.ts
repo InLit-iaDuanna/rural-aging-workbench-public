@@ -44,8 +44,24 @@ export function registerStreet(app: FastifyInstance, db: DB, storage: string) {
             : '';
     if (actual !== file.mimetype)
       throw new HttpError(422, '图片内容与格式不符');
-    const id = randomUUID();
-    await writeFile(join(storage, id), bytes, { mode: 0o600 });
+    const id = metadata.capture_id ?? randomUUID();
+    const existing = (
+      await db.query(
+        'SELECT id,project_id,created_by,consent FROM materials WHERE id=$1',
+        [id],
+      )
+    ).rows[0];
+    if (existing) {
+      if (
+        existing.project_id !== project ||
+        existing.created_by !== user ||
+        existing.consent !== 'allowed'
+      )
+        throw new HttpError(409, '采集编号已使用');
+      return { id, already_saved: true };
+    }
+
+    await writeFile(join(storage, id), bytes, { mode: 0o600, flag: 'wx' });
     try {
       // A single statement ensures metadata and its private material commit together.
       await db.query(
@@ -61,7 +77,7 @@ export function registerStreet(app: FastifyInstance, db: DB, storage: string) {
             ...metadata,
             coordinate_system: 'WGS84',
             source: '设备定位与用户上传',
-            captured_at: null,
+            captured_at: metadata.captured_at,
           }),
         ],
       );

@@ -191,6 +191,9 @@ export default function VillageJourney({
           乡筑<span>村庄工作台</span>
         </a>
         <div>
+          <a href={project ? `/collect?project=${project.id}` : '/collect'}>
+            手机采集
+          </a>
           <button onClick={() => setWelcome((v) => !v)}>
             <HelpCircle size={16} />
             使用指引

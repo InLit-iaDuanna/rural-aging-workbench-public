@@ -96,6 +96,43 @@ export function registerTencentMap(app: FastifyInstance) {
       })),
     };
   });
+  app.post('/api/v1/map/translate', async (req) => {
+    const { points } = z
+      .object({
+        points: z
+          .array(
+            z.object({
+              lat: z.number().min(-90).max(90),
+              lng: z.number().min(-180).max(180),
+            }),
+          )
+          .min(1)
+          .max(40),
+      })
+      .parse(req.body);
+    const key = process.env.TENCENT_MAP_KEY,
+      sk = process.env.TENCENT_MAP_SK;
+    if (!key || !sk) throw new HttpError(503, '腾讯坐标转换尚未配置');
+    const response = await fetch(
+      signedTencentUrl(
+        '/ws/coord/v1/translate',
+        {
+          locations: points.map((p) => `${p.lat},${p.lng}`).join(';'),
+          type: '1',
+        },
+        key,
+        sk,
+      ),
+      { signal: AbortSignal.timeout(15000) },
+    );
+    const data = (await response.json()) as any;
+    if (data.status !== 0)
+      throw new HttpError(
+        502,
+        `腾讯坐标转换返回 ${data.status}：${data.message}`,
+      );
+    return { points: data.locations, coordinate_system: 'GCJ-02' };
+  });
   // Fixed upstreams only; clients cannot choose a host or supply credentials.
   app.get('/api/v1/map/delegate', delegate);
   app.get('/api/v1/map/delegate/*', delegate);
